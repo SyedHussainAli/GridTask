@@ -6,10 +6,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private GridSpawner gridInfo;
+    private BoundryChecker bChecker;
     // Start is called before the first frame update
     void Start()
     {
         gridInfo = GameObject.Find("Cube Spawnner").GetComponent<GridSpawner>();
+        bChecker = GetComponent<BoundryChecker>();
     }
 
     // Update is called once per frame
@@ -20,27 +22,27 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerMovementt()
     {
-        PlayerConstraint();
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+      //  PlayerConstraint();
+        if (Input.GetKeyDown(KeyCode.UpArrow)&& bChecker.forwardPlane==false)
         {
             transform.position = new Vector3(transform.position.x, 1.6f, transform.position.z + 2);
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow)&&bChecker.backPlane == false)
         {
             transform.position = new Vector3(transform.position.x, 1.6f, transform.position.z - 2);
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) && bChecker.rightPlane == false)
         {
             transform.position = new Vector3(transform.position.x + 2, 1.6f, transform.position.z);
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && bChecker.leftPlane == false)
         {
             transform.position = new Vector3(transform.position.x - 2, 1.6f, transform.position.z);
         }
 
     }
 
-    private void PlayerConstraint()
+  /*  private void PlayerConstraint()
     {
         if (gameObject.transform.position.x < 0)
         {
@@ -58,5 +60,5 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, 1.6f, (gridInfo.colSpace - 2));
         }
-    }
+    }*/
 }
