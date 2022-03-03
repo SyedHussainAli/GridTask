@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-
+ 
   /*  private void PlayerConstraint()
     {
         if (gameObject.transform.position.x < 0)
